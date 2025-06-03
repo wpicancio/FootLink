@@ -1,0 +1,17 @@
+{
+  "name": "footlink-projeto",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "scripts": {
+    "dev": "node --watch ./src/server.js",
+    "server": "json-server ./src/database.json"
+  },
+  "keywords": [],
+  "author": "Sebastian Dias e Welington Picancio Jr.",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "json-server": "^1.0.0-beta.3"
+  }
+}

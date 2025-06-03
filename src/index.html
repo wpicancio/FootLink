@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTLINK - Conectando Talentos do Futebol</title>
+    <meta name="description" content="Plataforma que conecta jogadores de futebol com clubes e representantes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css"> </head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-futbol"></i>
+                <h1>FOOTLINK</h1>
+            </div>
+            <div class="loading-spinner"></div>
+            <p>Carregando talentos...</p>
+        </div>
+    </div>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <header id="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-futbol"></i>
+                    <h1>FOOTLINK</h1>
+                </div>
+                
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active" data-section="home">
+                                <i class="fas fa-home"></i>
+                                <span>Home</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#destaques" data-section="destaques">Destaques da Semana</a></li>
+                                <li><a href="#fichajes" data-section="fichajes">Atletas no Mercado</a></li>
+                                <li><a href="#contratados" data-section="contratados">Últimos Contratados</a></li>
+                                <li><a href="#feedback" data-section="feedback">Feedback</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#atletas" class="nav-link" data-section="atletas">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Atletas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#cartolas-apresentacao" class="nav-link" data-section="cartolas-apresentacao">
+                                <i class="fas fa-users"></i>
+                                <span>Cartolas</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#posicoes" data-section="posicoes">Buscar por Posição</a></li>
+                                <li><a href="#clubes" data-section="clubes">Clubes</a></li>
+                                <li><a href="#perfil" data-section="perfil">Perfil</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#cadastra-se" class="nav-link" data-section="cadastra-se">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Cadastrar-se</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">Bem-vindo ao <span class="gradient-text">FOOTLINK</span></h2>
+                        <p class="hero-subtitle">A plataforma que conecta talentos do futebol com oportunidades únicas</p>
+                    </div>
+                    
+                    <div class="hero-description">
+                        <p><strong>FOOTLINK</strong> é mais do que apenas uma plataforma; é o ponto de encontro para os futuros craques do futebol. Nossa missão é conectar jogadores de diferentes partes do mundo, oferecendo um espaço onde eles podem mostrar suas habilidades, compartilhar seus melhores momentos em campo e dar o primeiro passo rumo ao sonho de se tornarem profissionais do esporte.</p>
+                        
+                        <p>Acreditamos no poder do talento, na dedicação e na paixão que movem o futebol. Por isso, damos destaque a cada jogador que se empenha para alcançar o sucesso, seja no campo ou no treino. A plataforma permite que atletas de todos os níveis publiquem seus vídeos, ganhem visibilidade e se conectem com olheiros, clubes e empresários que estão em busca de novos talentos.</p>
+                        
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary" data-section="cadastra-se">
+                                <i class="fas fa-rocket"></i>
+                                Começar Agora
+                            </button>
+                            <button class="btn btn-secondary" data-section="destaques">
+                                <i class="fas fa-star"></i>
+                                Ver Destaques
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="destaques" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    Destaques da Semana
+                </h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="card-image">
+                            <img src="images/ochoa.jpg" alt="Ochoa"> <div class="card-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-content"><h3>Ochoa</h3><p class="position">Goleiro</p><p class="description">Defesa espetacular no último jogo</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="card-image">
+                            <img src="images/maria.jpg" alt="Maria Fernandes"> <div class="card-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-content"><h3>Maria Fernandes</h3><p class="position">Atacante</p><p class="description">Marcou 3 gols em uma partida</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="card-image">
+                            <img src="images/lamine.jpg" alt="Lamine Yamal"> <div class="card-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-content"><h3>Lamine Yamal</h3><p class="position">Meio-Campo</p><p class="description">Assistência decisiva no torneio regional</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fichajes" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-exchange-alt"></i>
+                    Últimos Contratados no Mercado
+                </h2>
+                
+                <div class="transfers-list">
+                    <div class="transfer-item">
+                        <div class="transfer-player">
+                            <img src="images/carlos_sousa.jpg" alt="Carlos Sousa" class="player-avatar"> <div class="player-info">
+                                <h4>Carlos Sousa</h4>
+                                <p>Meio-Campo • 22 anos</p>
+                            </div>
+                        </div>
+                        <div class="transfer-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="transfer-club">
+                            <img src="images/porto_logo.png" alt="FC Porto" class="club-logo"> <div class="club-info">
+                                <h4>FC Porto</h4>
+                                <p>Primeira Liga</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="transfer-item">
+                        <div class="transfer-player">
+                            <img src="images/rita_gomes.jpg" alt="Rita Gomes" class="player-avatar"> <div class="player-info">
+                                <h4>Rita Gomes</h4>
+                                <p>Atacante • 19 anos</p>
+                            </div>
+                        </div>
+                        <div class="transfer-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="transfer-club">
+                            <img src="images/benfica_logo.png" alt="Benfica" class="club-logo"> <div class="club-info">
+                                <h4>Benfica</h4>
+                                <p>Primeira Liga</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="transfer-item">
+                        <div class="transfer-player">
+                            <img src="images/lucas_almeida.jpg" alt="Lucas Almeida" class="player-avatar"> <div class="player-info">
+                                <h4>Lucas Almeida</h4>
+                                <p>Defesa • 20 anos</p>
+                            </div>
+                        </div>
+                        <div class="transfer-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="transfer-club">
+                            <img src="images/sporting_logo.png" alt="Sporting CP" class="club-logo"> <div class="club-info">
+                                <h4>Sporting CP</h4>
+                                <p>Primeira Liga</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contratados" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Últimos Representantes Cadastrados
+                </h2>
+                
+                <div class="representatives-grid">
+                    <div class="representative-card">
+                        <div class="card-avatar">
+                            <img src="images/andre_costa.jpg" alt="André Costa"> </div>
+                        <div class="card-info">
+                            <h3>André Costa</h3>
+                            <p class="title">Agente FIFA</p>
+                            <p class="experience">5+ anos de experiência</p>
+                            <button class="btn btn-outline">Ver Perfil</button>
+                        </div>
+                    </div>
+                    
+                    <div class="representative-card">
+                        <div class="card-avatar">
+                            <img src="images/clara_rodrigues.jpg" alt="Clara Rodrigues"> </div>
+                        <div class="card-info">
+                            <h3>Clara Rodrigues</h3>
+                            <p class="title">Empresária</p>
+                            <p class="experience">8+ anos de experiência</p>
+                            <button class="btn btn-outline">Ver Perfil</button>
+                        </div>
+                    </div>
+                    
+                    <div class="representative-card">
+                        <div class="card-avatar">
+                            <img src="images/tiago_pereira.jpg" alt="Tiago Pereira"> </div>
+                        <div class="card-info">
+                            <h3>Tiago Pereira</h3>
+                            <p class="title">Olheiro</p>
+                            <p class="experience">3+ anos de experiência</p>
+                            <button class="btn btn-outline">Ver Perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="feedback" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-comments"></i>
+                    Deixe seu Feedback
+                </h2>
+                
+                <form id="feedback-form" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-name">Nome:</label>
+                        <input type="text" id="feedback-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback-email">Email:</label>
+                        <input type="email" id="feedback-email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback-rating">Avaliação:</label>
+                        <div class="rating-input" id="feedback-rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback-texto">Seu feedback:</label>
+                        <textarea id="feedback-texto" name="feedback" rows="6" placeholder="Compartilhe sua opinião sobre a plataforma..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Feedback
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="atletas" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Nossos Atletas
+                </h2>
+                <p>Explore a lista completa de atletas talentosos em nossa plataforma.</p>
+                <div class="player-grid">
+                    <div class="player-card">
+                        <img src="images/player_placeholder.jpg" alt="Player Name"> <h3>Nome do Atleta</h3>
+                        <p>Posição: Atacante</p>
+                        <p>Idade: 20</p>
+                        <button class="btn btn-primary">Ver Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cartolas-apresentacao" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-users"></i>
+                    Área para Cartolas e Representantes
+                </h2>
+                <p>Conecte-se com talentos, gerencie seu portfólio e encontre as próximas estrelas do futebol.</p>
+                <div class="info-blocks">
+                    <div class="info-block">
+                        <h3><i class="fas fa-search"></i> Busca Avançada</h3>
+                        <p>Encontre atletas por posição, idade, nacionalidade e muito mais.</p>
+                    </div>
+                    <div class="info-block">
+                        <h3><i class="fas fa-handshake"></i> Conexões Diretas</h3>
+                        <p>Entre em contato direto com atletas e seus representantes.</p>
+                    </div>
+                    <div class="info-block">
+                        <h3><i class="fas fa-chart-line"></i> Estatísticas Detalhadas</h3>
+                        <p>Acesse dados de performance e histórico dos jogadores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="posicoes" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-crosshairs"></i>
+                    Buscar Atletas por Posição
+                </h2>
+                <p>Clique em uma posição para ver os atletas correspondentes.</p>
+                <div class="formation">
+                    <div class="row">
+                        <div class="position" data-position="Goleiro">Goleiro</div>
+                    </div>
+                    <div class="row">
+                        <div class="position" data-position="Zagueiro">Zagueiro</div>
+                        <div class="position" data-position="Lateral Direito">Lateral Direito</div>
+                        <div class="position" data-position="Lateral Esquerdo">Lateral Esquerdo</div>
+                    </div>
+                    <div class="row">
+                        <div class="position" data-position="Volante">Volante</div>
+                        <div class="position" data-position="Meio-Campo">Meio-Campo</div>
+                    </div>
+                    <div class="row">
+                        <div class="position" data-position="Atacante">Atacante</div>
+                    </div>
+                </div>
+                <div id="videos-container" class="player-videos-grid">
+                    <p class="initial-message">Selecione uma posição acima para ver os vídeos dos atletas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clubes" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Clubes Parceiros
+                </h2>
+                <p>Conheça os clubes que buscam talentos através do FOOTLINK.</p>
+                <div class="club-listing">
+                    <div class="club-card">
+                        <img src="images/fcporto.png" alt="FC Porto Logo"> <h3>FC Porto</h3>
+                        <p>Portugal</p>
+                        <button class="btn btn-outline">Ver Perfil</button>
+                    </div>
+                    <div class="club-card">
+                        <img src="images/slbenfica.png" alt="Benfica Logo"> <h3>SL Benfica</h3>
+                        <p>Portugal</p>
+                        <button class="btn btn-outline">Ver Perfil</button>
+                    </div>
+                    <div class="club-card">
+                        <img src="images/sportingcp.png" alt="Sporting CP Logo"> <h3>Sporting CP</h3>
+                        <p>Portugal</p>
+                        <button class="btn btn-outline">Ver Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="perfil" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-id-card-alt"></i>
+                    Meu Perfil (Cartola/Representante)
+                </h2>
+                <p>Gerencie suas informações e atletas.</p>
+                <form id="representative-profile-form" class="feedback-form">
+                    <div class="form-group">
+                        <label for="rep-name">Nome Completo:</label>
+                        <input type="text" id="rep-name" name="repName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rep-email">Email:</label>
+                        <input type="email" id="rep-email" name="repEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rep-crea">CREA/Registro:</label>
+                        <input type="text" id="rep-crea" name="repCrea">
+                    </div>
+                    <div class="form-group">
+                        <label for="rep-bio">Biografia:</label>
+                        <textarea id="rep-bio" name="repBio" rows="5" placeholder="Fale sobre sua experiência e especialidades..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Salvar Perfil
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="cadastra-se" class="section hidden">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-user-plus"></i>
+                    Cadastre-se no FOOTLINK
+                </h2>
+                <p>Junte-se à nossa comunidade e comece a sua jornada no futebol.</p>
+                <form id="registration-form" class="feedback-form">
+                    <div class="form-group">
+                        <label for="reg-type">Sou:</label>
+                        <select id="reg-type" name="registrationType" required>
+                            <option value="">Selecione</option>
+                            <option value="player">Atleta</option>
+                            <option value="agent">Cartola/Representante</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-name">Nome Completo:</label>
+                        <input type="text" id="reg-name" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email:</label>
+                        <input type="email" id="reg-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Senha:</label>
+                        <input type="password" id="reg-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Confirmar Senha:</label>
+                        <input type="password" id="reg-confirm-password" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Registrar
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-futbol"></i>
+                        <h3>FOOTLINK</h3>
+                    </div>
+                    <p>Conectando talentos do futebol com oportunidades únicas.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home" data-section="home">Home</a></li> <li><a href="#atletas" data-section="atletas">Atletas</a></li> <li><a href="#cartolas-apresentacao" data-section="cartolas-apresentacao">Cartolas</a></li> <li><a href="#cadastra-se" data-section="cadastra-se">Cadastrar-se</a></li> </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@footlink.com</li>
+                        <li><i class="fas fa-phone"></i> +351 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Porto, Portugal</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 FOOTLINK. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="javaf.js"></script>
+</body>
+</html>

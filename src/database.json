@@ -1,0 +1,21 @@
+{
+  "players": [
+    {
+      "id": "1748981995598",
+      "type": "player",
+      "name": "Ricardo Filipe Barbosa Rocha Nogueira",
+      "email": "ricardo.filipe.nogueira0@gmail.com",
+      "password": "precisadeser6",
+      "createdAt": "2025-06-03T20:19:55.598Z"
+    },
+    {
+      "id": "1748983033664",
+      "type": "player",
+      "name": "prof Natercia ",
+      "email": "natercia@gmail.com",
+      "password": "123456",
+      "createdAt": "2025-06-03T20:37:13.664Z"
+    }
+  ],
+  "agents": []
+}
