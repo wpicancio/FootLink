@@ -15,6 +15,14 @@
       "email": "natercia@gmail.com",
       "password": "123456",
       "createdAt": "2025-06-03T20:37:13.664Z"
+    },
+    {
+      "id": "1748989837689",
+      "type": "player",
+      "name": "Julia Nascimento ",
+      "email": "juju@outlook.pt",
+      "password": "987654",
+      "createdAt": "2025-06-03T22:30:37.689Z"
     }
   ],
   "agents": []
