@@ -1,0 +1,109 @@
+
+@import url("../estilo.css");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: var(--spacing-md);
+}
+
+main {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.logo-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.logo-section i.fa-futbol {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.logo-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+}
+
+.logo-section p {
+  color: var(--text-muted);
+}
+
+.input-group {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-dark);
+}
+
+.footer-links {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+#mensagem {
+  margin-top: var(--spacing-md);
+  color: var(--accent-color);
+}
+.login-footer {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.footer-link i {
+  font-size: 0.9em;
+}

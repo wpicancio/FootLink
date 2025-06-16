@@ -1,229 +1,190 @@
+// javaf.js
+// Este script JavaScript lida com a interatividade geral do site FOOTLINK,
+// incluindo navegação entre seções, funcionalidades de formulário, 
+// menu mobile, alternância de tema e efeitos de carregamento.
+
 $(document).ready(function() {
-    // Function to show a specific section and hide others
+    // --- Função para Exibir Seções --- //
+    // showSection(sectionId): Esconde todas as seções e exibe a seção especificada com um efeito de fade-in.
+    // Também atualiza a classe 'active' nos links de navegação.
     function showSection(sectionId) {
-        // Ensure all sections are hidden
-        $('section').addClass('hidden'); 
-        // Show the target section with a fade-in effect
-        $('#' + sectionId).removeClass('hidden').addClass('fade-in');
+        // Garante que todas as seções estejam ocultas
+        $("section").addClass("hidden"); 
+        // Exibe a seção alvo com um efeito de fade-in
+        $("#" + sectionId).removeClass("hidden").addClass("fade-in");
 
-        // Remove fade-in class after animation to allow repeated animations
+        // Remove a classe fade-in após a animação para permitir animações repetidas
         setTimeout(() => {
-            $('#' + sectionId).removeClass('fade-in');
-        }, 500); // Match this to your fade-in animation duration
+            $("#" + sectionId).removeClass("fade-in");
+        }, 500); // Deve corresponder à duração da animação fade-in no CSS
 
-        // Update active class on nav links immediately for visual feedback
-        $('.nav-link').removeClass('active');
+        // Atualiza a classe ativa nos links de navegação para feedback visual
+        $(".nav-link").removeClass("active");
         const $targetLink = $(`nav ul li a[data-section="${sectionId}"]`);
         
         if ($targetLink.length) {
-            $targetLink.addClass('active');
-            // If it's a dropdown item, also activate its parent main link
-            if ($targetLink.closest('.dropdown-menu').length) {
-                $targetLink.closest('.nav-item').children('.nav-link').addClass('active');
+            $targetLink.addClass("active");
+            // Se for um item de dropdown, também ativa o link principal pai
+            if ($targetLink.closest(".dropdown-menu").length) {
+                $targetLink.closest(".nav-item").children(".nav-link").addClass("active");
             }
         }
     }
 
-    // Handle clicks for all navigation links (main and dropdowns)
-    // Use event delegation for more robust handling, especially for dynamically added elements
-    $(document).on('click', 'nav ul li a[data-section], footer ul li a[data-section]', function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        const sectionId = $(this).data('section'); // Get section ID from data-section attribute
+    // --- Manipulação de Cliques em Links de Navegação --- //
+    // Usa delegação de eventos para lidar com cliques em links de navegação (principais e dropdowns).
+    // Previne o comportamento padrão do link e chama showSection para exibir a seção correspondente.
+    $(document).on("click", "nav ul li a[data-section], footer ul li a[data-section]", function(event) {
+        event.preventDefault(); // Previne o comportamento padrão do link
+        const sectionId = $(this).data("section"); // Obtém o ID da seção do atributo data-section
 
-        if (sectionId) { // Only proceed if a data-section is defined
-            // Hide mobile menu after clicking a link
-            if ($('#nav-menu').hasClass('active')) {
-                $('#nav-menu').removeClass('active');
-                $('#mobile-menu-toggle').removeClass('active');
+        if (sectionId) { // Procede apenas se um data-section estiver definido
+            // Esconde o menu mobile após clicar em um link
+            if ($("#nav-menu").hasClass("active")) {
+                $("#nav-menu").removeClass("active");
+                $("#mobile-menu-toggle").removeClass("active");
             }
 
-            // Immediately show the section and update active state
+            // Exibe imediatamente a seção e atualiza o estado ativo
             showSection(sectionId);
 
-            // Scroll to the target section with a faster animation
-            $('html, body').stop().animate({ // .stop() prevents queuing animations
-                scrollTop: $('#' + sectionId).offset().top - ($('#main-header').outerHeight() || 0) // Adjust for fixed header
-            }, 400); // Reduced duration to 400ms (from 800ms) for "rapinamente"
+            // Rola para a seção alvo com uma animação mais rápida
+            $("html, body").stop().animate({ // .stop() previne o enfileiramento de animações
+                scrollTop: $("#" + sectionId).offset().top - ($("#main-header").outerHeight() || 0) // Ajusta para o cabeçalho fixo
+            }, 400); // Duração reduzida para 400ms
         }
     });
 
-    // Handle clicks for buttons that trigger section changes (e.g., "Começar Agora")
-    $(document).on('click', '.btn[data-section]', function() { // Use event delegation
-        const sectionId = $(this).data('section');
+    // --- Manipulação de Cliques em Botões que Acionam Mudanças de Seção --- //
+    // Lida com cliques em botões que possuem o atributo data-section (ex: "Começar Agora").
+    $(document).on("click", ".btn[data-section]", function() { // Usa delegação de eventos
+        const sectionId = $(this).data("section");
         if (sectionId) {
             showSection(sectionId);
-            $('html, body').stop().animate({
-                scrollTop: $('#' + sectionId).offset().top - ($('#main-header').outerHeight() || 0)
+            $("html, body").stop().animate({
+                scrollTop: $("#" + sectionId).offset().top - ($("#main-header").outerHeight() || 0)
             }, 400);
         }
     });
 
-    // Form submission for generic registration form (if exists)
-    /*$('#registration-form').on('submit', function(event) {
+    // --- Envio do Formulário de Registro --- //
+    // Lida com o envio do formulário de registro, enviando os dados para o servidor via AJAX.
+    $("#registration-form").on("submit", function(event) {
         event.preventDefault();
-        alert('Cadastro enviado com sucesso!');
-        $(this)[0].reset(); 
-    });*/
+        
+        const formData = {
+            registrationType: $("#reg-type").val(),
+            fullName: $("#reg-name").val(),
+            username: $("#reg-username").val(),
+            email: $("#reg-email").val(),
+            password: $("#reg-password").val(),
+            confirmPassword: $("#reg-confirm-password").val()
+        };
 
-    // Atualização no javaf.js (dentro do $(document).ready())
-$('#registration-form').on('submit', function(event) {
-    event.preventDefault();
-    
-    const formData = {
-        registrationType: $('#reg-type').val(),
-        fullName: $('#reg-name').val(),
-        email: $('#reg-email').val(),
-        password: $('#reg-password').val(),
-        confirmPassword: $('#reg-confirm-password').val()
-    };
+        // Mostra um spinner de carregamento no botão de envio
+        const submitBtn = $(this).find("button[type='submit']");
+        submitBtn.html("<div class='mini-loading-spinner'></div> Processando...").prop("disabled", true);
 
-    // Mostrar loading
-    const submitBtn = $(this).find('button[type="submit"]');
-    submitBtn.html('<div class="mini-loading-spinner"></div> Processando...').prop('disabled', true);
-
-    // Enviar para o servidor
-    $.ajax({
-        url: '/register',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(formData),
-        success: function(response) {
-            if (response.success) {
-                alert(`Cadastro realizado com sucesso! Bem-vindo(a), ${response.user.name}`);
-                $('#registration-form')[0].reset();
-                
-                // Redirecionar conforme o tipo de usuário
-                if (formData.registrationType === 'player') {
-                    showSection('atletas');
+        // Envia os dados para o servidor via AJAX
+        $.ajax({
+            url: "/register",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function(response) {
+                if (response.success) {
+                    alert(`Cadastro realizado com sucesso! Bem-vindo(a), ${response.user.name}`);
+                    $("#registration-form")[0].reset(); // Reseta o formulário
+                    
+                   window.location.href = "login/login.html";
                 } else {
-                    showSection('cartolas-apresentacao');
+                    alert(response.message);
                 }
-            } else {
-                alert(response.message);
+            },
+            error: function(xhr) {
+                const errorMsg = xhr.responseJSON?.message || "Erro ao conectar com o servidor";
+                alert(errorMsg);
+            },
+            complete: function() {
+                // Restaura o botão de envio após a conclusão da requisição
+                submitBtn.html("<i class='fas fa-user-plus'></i> Registrar").prop("disabled", false);
             }
-        },
-        error: function(xhr) {
-            const errorMsg = xhr.responseJSON?.message || 'Erro ao conectar com o servidor';
-            alert(errorMsg);
-        },
-        complete: function() {
-            submitBtn.html('<i class="fas fa-user-plus"></i> Registrar').prop('disabled', false);
-        }
-    });
-});
-
-    // Form submission for representative profile form (if exists)
-    $('#representative-profile-form').on('submit', function(event) {
-        event.preventDefault();
-        alert('Perfil do Representante atualizado com sucesso!');
-        $(this)[0].reset();
-    });
-
-    // Form submission for feedback-form
-    $('#feedback-form').on('submit', function(event) {
-        event.preventDefault();
-        alert('Feedback enviado com sucesso! Obrigado pela sua avaliação.');
-        $(this)[0].reset(); // Reset the form fields
-    });
-
-    // Function to show players based on position
-    function showPlayers(position) {
-        const $videosContainer = $('#videos-container');
-        $videosContainer.html(`<p>Carregando vídeos de ${position}...</p><div class="loading-spinner"></div>`); // Show spinner
-
-        setTimeout(() => {
-            const players = [
-                // Replace these with your actual image/video paths
-                { name: 'Goleiro A', position: 'Goleiro', rating: 4.8, video: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg', youtubeId: 'dQw4w9WgXcQ' }, 
-                { name: 'Goleiro B', position: 'Goleiro', rating: 4.5, video: 'https://via.placeholder.com/400x225/FF0000/FFFFFF?text=Video+Goleiro+B' },
-                { name: 'Zagueiro X', position: 'Zagueiro', rating: 4.7, video: 'https://via.placeholder.com/400x225/00FF00/FFFFFF?text=Video+Zagueiro+X' },
-                { name: 'Lateral D. P', position: 'Lateral Direito', rating: 4.6, video: 'https://via.placeholder.com/400x225/0000FF/FFFFFF?text=Video+Lateral+D' },
-                { name: 'Lateral E. Q', position: 'Lateral Esquerdo', rating: 4.4, video: 'https://via.placeholder.com/400x225/FFFF00/000000?text=Video+Lateral+E' },
-                { name: 'Volante R', position: 'Volante', rating: 4.9, video: 'https://img.youtube.com/vi/2N0lR052JjM/hqdefault.jpg', youtubeId: '2N0lR052JjM' },
-                { name: 'Meio-Campo S', position: 'Meio-Campo', rating: 4.7, video: 'https://via.placeholder.com/400x225/00FFFF/000000?text=Video+Meio-Campo+S' },
-                { name: 'Atacante T', position: 'Atacante', rating: 5.0, video: 'https://img.youtube.com/vi/S-sP-9F2-pI/hqdefault.jpg', youtubeId: 'S-sP-9F2-pI' },
-                { name: 'Atacante U', position: 'Atacante', rating: 4.8, video: 'https://via.placeholder.com/400x225/800080/FFFFFF?text=Video+Atacante+U' },
-            ];
-
-            const filteredPlayers = players.filter(player => player.position === position);
-            filteredPlayers.sort((a, b) => b.rating - a.rating); // Sort by rating (descending)
-
-            if (filteredPlayers.length > 0) {
-                const playerHtml = filteredPlayers.map(player => `
-                    <div class="player-video-card">
-                        <h3>${player.name}</h3>
-                        <p>Posição: ${player.position} | Avaliação: ${player.rating}</p>
-                        ${player.youtubeId ? 
-                            `<div class="video-responsive">
-                                <iframe src="https://www.youtube.com/embed/${player.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>` :
-                            `<div class="video-responsive">
-                                <img src="${player.video}" alt="Video Thumbnail for ${player.name}" style="width:100%; height:100%; object-fit: cover;">
-                            </div>`
-                        }
-                    </div>
-                `).join('');
-                $videosContainer.html(playerHtml);
-            } else {
-                $videosContainer.html(`<p>Nenhum atleta encontrado para a posição de ${position}.</p>`);
-            }
-        }, 800); 
-    }
-
-    // Initial section display (show 'home' on page load)
-    // Check if there's a hash in the URL to load a specific section
-    const initialSection = window.location.hash ? window.location.hash.substring(1) : 'home';
-    showSection(initialSection);
-
-    // Toggle Mobile Menu
-    $('#mobile-menu-toggle').on('click', function() {
-        $('#nav-menu').toggleClass('active');
-        $(this).toggleClass('active');
-        // Prevent body scroll when mobile menu is open
-        $('body').toggleClass('no-scroll'); 
-    });
-
-    // Hide mobile menu when clicking outside
-    $(document).on('click', function(event) {
-        if (!$(event.target).closest('.main-nav').length && !$(event.target).closest('#mobile-menu-toggle').length) {
-            if ($('#nav-menu').hasClass('active')) {
-                $('#nav-menu').removeClass('active');
-                $('#mobile-menu-toggle').removeClass('active');
-                $('body').removeClass('no-scroll');
-            }
-        }
-    });
-
-    // Theme Toggle functionality
-    $('#theme-toggle').on('click', function() {
-        $('body').attr('data-theme', $('body').attr('data-theme') === 'light' ? '' : 'light'); 
-        const icon = $('#theme-icon');
-        if ($('body').attr('data-theme') === 'light') {
-            icon.removeClass('fa-moon').addClass('fa-sun');
-        } else {
-            icon.removeClass('fa-sun').addClass('fa-moon');
-        }
-    });
-
-    // Header scroll effect
-    $(window).on('scroll', function() {
-        if ($(this).scrollTop() > 50) {
-            $('#main-header').addClass('scrolled');
-        } else {
-            $('#main-header').removeClass('scrolled');
-        }
-    });
-
-    // Loading Screen functionality
-    $(window).on('load', function() {
-        $('#loading-screen').fadeOut('slow', function() {
-            $(this).remove();
         });
     });
 
-    // Trigger showPlayers when a position is clicked in the #posicoes section
-    $('.position').on('click', function() {
-        const position = $(this).data('position');
-        showPlayers(position);
+    // --- Envio do Formulário de Perfil do Representante --- //
+    // Lida com o envio do formulário de perfil do representante (atualmente apenas exibe um alerta).
+    $("#representative-profile-form").on("submit", function(event) {
+        event.preventDefault();
+        alert("Perfil do Representante atualizado com sucesso!");
+        $(this)[0].reset();
+    });
+
+    // --- Envio do Formulário de Feedback --- //
+    // Lida com o envio do formulário de feedback (atualmente apenas exibe um alerta).
+    $("#feedback-form").on("submit", function(event) {
+        event.preventDefault();
+        alert("Feedback enviado com sucesso! Obrigado pela sua avaliação.");
+        $(this)[0].reset(); // Reseta os campos do formulário
+    });
+
+    // --- Exibição da Seção Inicial --- //
+    // Verifica se há um hash na URL para carregar uma seção específica ou exibe a seção 'home' por padrão.
+    const initialSection = window.location.hash ? window.location.hash.substring(1) : "home";
+    showSection(initialSection);
+
+    // --- Alternar Menu Mobile --- //
+    // Lida com a abertura e fechamento do menu de navegação mobile.
+    $("#mobile-menu-toggle").on("click", function() {
+        $("#nav-menu").toggleClass("active");
+        $(this).toggleClass("active");
+        // Previne o scroll do body quando o menu mobile está aberto
+        $("body").toggleClass("no-scroll"); 
+    });
+
+    // --- Esconder Menu Mobile ao Clicar Fora --- //
+    // Esconde o menu mobile se o usuário clicar fora da área do menu.
+    $(document).on("click", function(event) {
+        if (!$(event.target).closest(".main-nav").length && !$(event.target).closest("#mobile-menu-toggle").length) {
+            if ($("#nav-menu").hasClass("active")) {
+                $("#nav-menu").removeClass("active");
+                $("#mobile-menu-toggle").removeClass("active");
+                $("body").removeClass("no-scroll");
+            }
+        }
+    });
+
+    // --- Funcionalidade de Alternância de Tema --- //
+    // Alterna entre o tema claro e escuro e salva a preferência no localStorage.
+    $("#theme-toggle").on("click", function() {
+        let currentTheme = $("body").attr("data-theme");
+        let newTheme = currentTheme === "light" ? "" : "light"; // Alterna entre claro e escuro (padrão é vazio)
+        $("body").attr("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme); // Salva a preferência do tema
+
+        const icon = $("#theme-icon");
+        if (newTheme === "light") {
+            icon.removeClass("fa-moon").addClass("fa-sun");
+        } else {
+            icon.removeClass("fa-sun").addClass("fa-moon");
+        }
+    });
+
+    // --- Efeito de Scroll no Cabeçalho --- //
+    // Adiciona uma classe ao cabeçalho quando a página é rolada para baixo.
+    $(window).on("scroll", function() {
+        if ($(this).scrollTop() > 50) {
+            $("#main-header").addClass("scrolled");
+        } else {
+            $("#main-header").removeClass("scrolled");
+        }
+    });
+
+    // --- Funcionalidade da Tela de Carregamento --- //
+    // Esconde a tela de carregamento quando a página é totalmente carregada.
+    $(window).on("load", function() {
+        $("#loading-screen").fadeOut("slow", function() {
+            $(this).remove();
+        });
     });
 });

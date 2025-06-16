@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Footlink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../estilo.css"> 
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main>
+    <div class="logo-section">
+      <i class="fas fa-futbol"></i>
+      <h2>FOOTLINK</h2>
+      <p>Entre na sua conta</p>
+    </div>
+    
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" required placeholder="••••••••">
+      </div>
+
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i>
+        Entrar
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <a href="../index.html" class="footer-link">
+        <i class="fas fa-arrow-left"></i>
+        Voltar ao início
+      </a>
+    </div>
+
+    <p id="mensagem"></p>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

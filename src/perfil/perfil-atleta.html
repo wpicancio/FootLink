@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Atleta | FOOTLINK Social</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css"> 
+    <link rel="stylesheet" href="perfil-atleta.css"> </head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <header id="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-futbol"></i>
+                    <h1>FOOTLINK</h1>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item"><a href="index.html#home" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                        <li class="nav-item">
+                          <a href="pesquisar.html" class="nav-link">
+                              <i class="fas fa-search"></i> <span>Pesquisar</span>
+                          </a>
+                        </li>
+                        <li class="nav-item"><a href="#" class="nav-link active"><i class="fas fa-user"></i> <span>Meu Perfil</span></a></li>
+
+                        <li class="nav-item"><a href="#" class="nav-link" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="profile-hero" class="section">
+            <div class="container profile-header">
+                <div class="profile-avatar-wrapper">
+                    <img src="images/player_placeholder.jpg" alt="Foto de Perfil" id="profile-avatarrr" class="profile-avatar">
+                    <label for="avatar-upload" class="upload-icon-label" title="Mudar foto de perfil">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="avatar-upload" accept="image/*" class="hidden">
+                </div>
+                <h2 class="profile-name" id="nomeAtleta"></h2>
+                <p class="profile-bio" id="bioAtleta"></p>
+                <div class="profile-stats">
+                    <span><i class="fas fa-users"></i>  Seguidores</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Portugal</span>
+                </div>
+                <button class="btn btn-primary edit-profile-btn"><i class="fas fa-edit"></i> Editar Perfil</button>
+            </div>
+        </section>
+
+        <section id="create-post" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Criar Nova Publicação
+                </h2>
+                <form id="post-form">
+                    <textarea id="post-text" placeholder="O que você está a fazer hoje, craque?"></textarea>
+                    <div class="post-media-upload">
+                        <label for="post-image-upload" class="btn btn-secondary">
+                            <i class="fas fa-image"></i> Adicionar Imagem
+                        </label>
+                        <input type="file" id="post-image-upload" accept="image/*" class="hidden">
+                        
+                        <label for="post-video-upload" class="btn btn-secondary">
+                            <i class="fas fa-video"></i> Adicionar Vídeo
+                        </label>
+                        <input type="file" id="post-video-upload" accept="video/*" class="hidden">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Publicar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="player-feed" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-newspaper"></i>
+                    Minhas Publicações
+                </h2>
+                <div id="feed-posts" class="feed-posts">
+                    <p class="initial-message">Nenhuma publicação ainda. Faça a sua primeira!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-futbol"></i>
+                        <h3>FOOTLINK</h3>
+                    </div>
+                    <p>Conectando talentos do futebol com oportunidades únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="#">Meu Perfil</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@footlink.com</li>
+                        <li><i class="fas fa-phone"></i> +351 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Porto, Portugal</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 FOOTLINK. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="perfil-atleta.js"></script> 
+  </body>
+</html>

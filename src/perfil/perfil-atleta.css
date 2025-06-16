@@ -1,0 +1,641 @@
+/* Importar variáveis e estilos base do estilo.css */
+@import url("estilo.css");
+
+/* Estilos específicos para o Perfil do Atleta Social */
+
+body {
+    /* Garante que o body usa as variáveis de tema */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Hero Section do Perfil */
+#profile-hero {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl) 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#profile-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+#profile-hero .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.profile-avatar-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+    
+
+.profile-avatar-wrapper:hover {
+    transform: scale(1.05);
+}
+
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.upload-icon-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--bg-secondary); /* Usa a cor de fundo do tema */
+    color: var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+    border: 2px solid var(--primary-color);
+}
+
+.upload-icon-label:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.profile-name {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary); /* Assume que o hero content sobrepõe o gradiente, ou ajusta o text-primary */
+    background: linear-gradient(45deg, #ffffff, #f8fafc); /* Reutiliza o estilo do H1 do header */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-bio {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-muted);
+}
+
+.profile-stats span {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.profile-stats i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.edit-profile-btn {
+    margin-top: var(--spacing-md);
+}
+
+/* Melhorias modernas para cards de publicações - Inspirado em Instagram/Twitter */
+
+/* Seção de Criar Publicação com design moderno */
+#create-post {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+#create-post::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  border-radius: 24px 24px 0 0;
+}
+
+#create-post .section-title {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-lg);
+}
+
+#post-form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--spacing-md);
+  border: 2px solid rgba(102, 126, 234, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: var(--spacing-md);
+  transition: all var(--transition-normal);
+  font-family: inherit;
+}
+
+#post-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+#post-form textarea::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+.post-media-container {
+    margin-top: 15px;
+    max-width: 100%;
+}
+
+.post-media {
+    max-width: 100%;
+    max-height: 500px;
+    display: block;
+    margin: 10px auto;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+.post-media {
+    max-width: 100%;
+    max-height: 500px;
+    display: block;
+    margin: 10px auto;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.media-container {
+    position: relative;
+    min-height: 100px;
+}
+
+.media-error {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+[data-post-id] {
+    transition: opacity 0.3s;
+}
+
+.post-media[src*=".jpg"], 
+.post-media[src*=".jpeg"], 
+.post-media[src*=".png"] {
+    object-fit: contain;
+}
+.post-media-upload {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.post-media-upload label.btn {
+  flex-grow: 1;
+  min-width: 150px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  color: #667eea;
+  border: 2px dashed #667eea;
+  transition: all var(--transition-normal);
+}
+
+.post-media-upload label.btn:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* Cards de publicações modernos */
+.feed-posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-md);
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: black;
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.post-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.post-card:hover::before {
+  opacity: 1;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.post-header .post-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 2px;
+  transition: all var(--transition-normal);
+}
+
+.post-header .post-avatar:hover {
+  transform: scale(1.1);
+}
+
+.post-author-info {
+  flex: 1;
+}
+
+.post-header .post-author {
+  font-weight: 700;
+  color: grey;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.post-header .post-time {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.post-content {
+  margin-bottom: var(--spacing-md);
+}
+
+.post-content p {
+  color: #000 !important; /* Texto preto */
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.post-media {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+  display: block;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-media:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-responsive video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.post-actions {
+  display: flex;
+  gap: var(--spacing-lg);
+  border-top: 1px solid rgba(102, 126, 234, 0.1);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.post-actions button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.post-actions button:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.post-actions button.liked {
+  color: #e53e3e;
+}
+
+.post-actions button.liked:hover {
+  color: #c53030;
+  background: rgba(229, 62, 62, 0.1);
+}
+
+/* Mensagem inicial melhorada */
+.initial-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--spacing-xl);
+  font-style: italic;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  border-radius: 16px;
+  border: 2px dashed rgba(102, 126, 234, 0.2);
+  font-size: 1.1rem;
+}
+
+/* Animações para novos posts */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-card.new-post {
+  animation: slideInFromTop 0.5s ease;
+}
+
+/* Melhorias para o hero do perfil */
+/* Container do perfil centralizado */
+.profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+/* Ajustes para o avatar */
+.profile-avatar-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: var(--spacing-md);
+    border-radius: 50%;
+    overflow: hidden; /* Isso é essencial para cortar a imagem dentro do círculo */
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s;
+}
+
+/* Ajustes para os campos de edição */
+.profile-edit-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--spacing-md); /* opcional */
+}
+
+.profile-edit-fields select {
+  width: auto;
+  min-width: 200px;
+  text-align: center;
+}
+#profile-hero {
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+  text-align: center;
+  flex-direction: column;
+  padding: var(--spacing-xl) 0;
+}
+
+#profile-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.profile-avatar-wrapper {
+  .profile-avatar-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+}
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+  .post-media-upload {
+    flex-direction: column;
+  }
+  
+  .post-actions {
+    justify-content: space-around;
+  }
+  
+  .post-header {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-bio {
+        font-size: 1rem;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .post-media-upload {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    #profile-hero, #create-post, #player-feed {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
+    }
+
+    .profile-avatar-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+
+    .upload-icon-label {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+    }
+}
+/* Estilo geral para inputs, textarea e select do perfil */
+input[type="text"],
+textarea,
+select {
+  width: 100%;             /* Ocupa toda largura do container */
+  padding: 10px 15px;      /* Espaçamento interno confortável */
+  margin-bottom: 15px;     /* Espaço entre os campos */
+  border: 2px solid #ccc;  /* Borda cinza clara */
+  border-radius: 8px;      /* Cantos arredondados */
+  font-size: 16px;         /* Fonte legível */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  background-color: #fff;  /* Fundo branco */
+  color: #090909;             /* Cor do texto */
+}
+
+/* Quando o campo está em foco */
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #007bff;   /* Azul (ou cor que desejar) */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Sombra azul suave */
+  outline: none;           /* Remove outline padrão */
+}
+
+/* Placeholder com cor mais suave */
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Textarea específico para altura maior */
+textarea {
+  min-height: 100px;
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.btn-excluir {
+    background-color: #dcdcdc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-excluir:hover {
+    background-color: #d0cece;
+}

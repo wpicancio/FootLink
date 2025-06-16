@@ -1,28 +1,15 @@
 {
   "players": [
     {
-      "id": "1748981995598",
+      "id": "1750021641116",
       "type": "player",
-      "name": "Ricardo Filipe Barbosa Rocha Nogueira",
-      "email": "ricardo.filipe.nogueira0@gmail.com",
-      "password": "precisadeser6",
-      "createdAt": "2025-06-03T20:19:55.598Z"
-    },
-    {
-      "id": "1748983033664",
-      "type": "player",
-      "name": "prof Natercia ",
-      "email": "natercia@gmail.com",
-      "password": "123456",
-      "createdAt": "2025-06-03T20:37:13.664Z"
-    },
-    {
-      "id": "1748989837689",
-      "type": "player",
-      "name": "Julia Nascimento ",
-      "email": "juju@outlook.pt",
-      "password": "987654",
-      "createdAt": "2025-06-03T22:30:37.689Z"
+      "name": "Frida",
+      "email": "frida@g.com",
+      "username": "@frida",
+      "password": "$2b$10$hMpGuwYrgR4Pvr6C/reM2.BMS/oP2btosJ8qG6UpYk9KQsI9luqGm",
+      "createdAt": "2025-06-15T21:07:21.117Z",
+      "foto": "/uploads/1750029628981-WhatsApp Image 2024-11-29 at 19.27.27.jpeg",
+      "publicacoes": []
     }
   ],
   "agents": []
